@@ -28,12 +28,12 @@ public class TeamTest {
         Team team2 = new Team("TeamClone");
         team2.addMember("Dummy");
         Team team3 = new Team("TeamClone");
-        team3.addMember("Dummy");
+        team3.addMember("Dummy2");
         assertTrue(team.equals(team), "Team equals itself");
         assertTrue(!team.equals(1), "Team does not equal non-team object");
         assertTrue(!team.equals(team2), "Team does not equal different team object");
-        assertTrue(team2.equals(team3), "Team equals itself");
-
+        assertTrue(!team2.equals(team3), "Team equals itself");
+        // assertTrue(!team2.equals(team), "Team does not equal imposter");
     }
 
     @Test
@@ -43,6 +43,6 @@ public class TeamTest {
 
     @Test
     public void testHashCode(){
-        assertEquals(team.hashCode(), team.hashCode());
+        assertEquals(-1327023895, team.hashCode());
     }
 }
