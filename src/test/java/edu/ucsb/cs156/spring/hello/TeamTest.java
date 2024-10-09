@@ -1,6 +1,7 @@
 package edu.ucsb.cs156.spring.hello;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,5 +23,26 @@ public class TeamTest {
    
     // TODO: Add additional tests as needed to get to 100% jacoco line coverage, and
     // 100% mutation coverage (all mutants timed out or killed)
+    @Test
+    public void testEqualities(){
+        Team team2 = new Team("TeamClone");
+        team2.addMember("Dummy");
+        Team team3 = new Team("TeamClone");
+        team3.addMember("Dummy");
+        assertTrue(team.equals(team), "Team equals itself");
+        assertTrue(!team.equals(1), "Team does not equal non-team object");
+        assertTrue(!team.equals(team2), "Team does not equal different team object");
+        assertTrue(team2.equals(team3), "Team equals itself");
 
+    }
+
+    @Test
+    public void testToString(){
+        assertTrue(team.toString().equals("Team(name="+team.getName()+", members="+team.getMembers()+")"));
+    }
+
+    @Test
+    public void testHashCode(){
+        assertEquals(team.hashCode(), team.hashCode());
+    }
 }
