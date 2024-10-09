@@ -1,4 +1,4 @@
-name: Jacoco
+name: Pitest
 
 on:
   pull_request:
@@ -14,11 +14,14 @@ jobs:
         with:
           distribution: 'oracle' # See 'Supported distributions' for available options
           java-version: '21'
-      - name: Build with Maven
-        run: mvn test jacoco:report verify
-      - name: Upload Jacoco to Artifacts
+      - name: Pitest
+        run: mvn test pitest:mutationCoverage
+      - name: Upload Pitest to Artifacts
+<<<<<<< HEAD
+        uses: actions/upload-artifact@v3
+=======
         uses: actions/upload-artifact@v4
+>>>>>>> 17e10624eaa505f39f7d41b9d20590996bd80217
         with:
-          name: jacoco-code-coverage
-          path: target/site/jacoco/**/*
-
+          name: pitest-mutation-testing
+          path: target/pit-reports/**/*  
